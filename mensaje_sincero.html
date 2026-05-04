@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Alguien Especial</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;1,400&family=Montserrat:wght@200;400&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #050505;
+            color: #dcdcdc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .background-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #121212 0%, #000 100%);
+            z-index: -1;
+        }
+
+        .main-card {
+            background: rgba(10, 10, 10, 0.98);
+            padding: 50px 35px;
+            border-radius: 4px;
+            border: 1px solid #c5a059;
+            box-shadow: 0 0 50px rgba(197, 160, 89, 0.15);
+            text-align: center;
+            max-width: 440px;
+            width: 85%;
+            transition: all 1s ease;
+        }
+
+        h1 {
+            font-family: 'Bodoni Moda', serif;
+            color: #c5a059;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-size: 1.2em;
+            margin-bottom: 25px;
+        }
+
+        p {
+            font-weight: 200;
+            line-height: 1.8;
+            font-size: 0.95em;
+            margin-bottom: 25px;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 35px;
+        }
+
+        input[type="password"] {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #c5a059;
+            color: #fff;
+            padding: 8px;
+            font-size: 1.6em;
+            text-align: center;
+            width: 100%;
+            outline: none;
+            letter-spacing: 6px;
+        }
+
+        button {
+            background: transparent;
+            color: #c5a059;
+            border: 1px solid #c5a059;
+            padding: 12px 45px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75em;
+            transition: 0.5s;
+        }
+
+        button:hover {
+            background: #c5a059;
+            color: #000;
+        }
+
+        #special-content {
+            display: none;
+            opacity: 0;
+        }
+
+        .reveal-content {
+            display: block !important;
+            animation: fadeInMessage 2.5s forwards;
+        }
+
+        @keyframes fadeInMessage {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message-body {
+            font-family: 'Bodoni Moda', serif;
+            font-style: italic;
+            font-size: 1.15em;
+            color: #f0f0f0;
+            margin-top: 10px;
+            line-height: 1.7;
+        }
+
+        .highlight-date {
+            margin-top: 40px;
+            color: #c5a059;
+            font-size: 1.1em;
+            letter-spacing: 4px;
+            font-family: 'Bodoni Moda', serif;
+            font-weight: bold;
+        }
+
+        .ornament {
+            font-size: 1.8em;
+            color: #c5a059;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="background-overlay"></div>
+
+<div class="main-card" id="door">
+    <h1>Memoria Compartida</h1>
+    <p>Para abrir este mensaje, introduce la fecha de mi nacimiento (DDMMAAAA):</p>
+    <div class="input-box">
+        <input type="password" id="key-input" maxlength="8">
+    </div>
+    <button onclick="openMessage()">Desbloquear</button>
+</div>
+
+<div class="main-card" id="special-content">
+    <div class="ornament">✧</div>
+    <div class="message-body">
+        "Hay personas que, aunque los caminos tomen rumbos distintos, dejan una huella que el tiempo no sabe borrar. 
+        <br><br>
+        Entre todos los recuerdos que guardo, los que vivimos juntos ocupan un lugar con luz propia. Sé que no es igual el presente y que es normal no querer saber de mí y pues me tomes al olvido...
+        <br><br>
+        Por culpa de creer en 'mis amigos' te perdí, pero yo no puedo dejar de recordarte."
+    </div>
+    <div class="highlight-date">07 / 09 / 2016</div>
+    <div style="margin-top: 30px; font-size: 0.6em; letter-spacing: 2px; opacity: 0.4; text-transform: uppercase;">
+        29 • 04 • 2000
+    </div>
+</div>
+
+<script>
+    function openMessage() {
+        const val = document.getElementById('key-input').value;
+        if(val === "29042000") {
+            document.getElementById('door').style.display = "none";
+            const content = document.getElementById('special-content');
+            content.classList.add('reveal-content');
+        } else {
+            alert("Clave incorrecta.");
+            document.getElementById('key-input').value = "";
+        }
+    }
+</script>
+
+</body>
+</html>
